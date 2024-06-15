@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sistema Autogestion</title>
+    <title>Informacion</title>
     <style>
         .negarSeleccion {
             user-select: none;
@@ -36,7 +36,7 @@
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
-        .contenedorLogin {
+        .contenedorLista {
             background-color: rgba(77, 77, 77, 0.473);
             box-shadow: 0 0 20px rgb(255, 255, 255);
             padding: 25px;
@@ -45,6 +45,13 @@
             border-color: white;
             width: 350px;
             color: white;
+        }
+
+        table, th, td {
+            border: 1px solid rgb(224, 224, 224); padding: 0;
+            background-color: rgba(34, 34, 34, 0.425);
+            color: white;
+            padding: 5px;
         }
         
         .customButton {
@@ -62,42 +69,36 @@
             font-family: Arial, Helvetica, sans-serif; 
             font-size: 20px;
         }
-
-        .customEntry {
-            border-radius: 10px;
-            border: 2px solid rgb(255, 255, 255);
-            color: rgb(255, 255, 255);
-            background-color: rgba(68, 64, 64, 0.473);
-            padding: 10px; 
-            font-size: 16px; 
-        }
-
-        .customEntry::placeholder {
-            color: #ffffff; 
-        }
-
     </style>
 </head>
 <body>
     <div class="contenedor">
-        <div class="contenedorLogin">
-            <form th:action="@{/login}" method="post">
-                <label for="Usuario", class="negarSeleccion">USUARIO:</label>
+        <div class="contenedorLista">
+            <ol style="list-style: none; padding: 0; text-align: center;">
+                <label class="negarSeleccion">INTEGRANTES:</label>
                 <div class="division"></div>
-                <input id="username" type="text" name="username" placeholder="Ingrese su usuario" class="customEntry"/>
+                <li th:each="integrante : ${integrantesGrupo2}" th:text="${integrante}" class="negarSeleccion"></li>
                 <div class="division"></div>
-                <label for="Contraseña" class="negarSeleccion"> CONTRASEÑA:</label>
-                <div class="division"></div>
-                <input id="password" type="password" name="password" placeholder="Ingrese su contraseña" class="customEntry"/>
-                <div class="division"></div>
-                <button type="submit" class="negarSeleccion customButton">LOGIN</button>
-            </form>
-            <div th:if="${error}" style="color: red; font-weight: bold;">
-                Usuario o contraseña incorrectos. Intenta nuevamente.
-            </div>
+                <table class="negarSeleccion">
+                    <tr>
+                        <th>LENGUAJE</th>
+                        <th>DBMS</th>
+                        <th>DB USER</th>
+                        <th>DB PASS</th>
+                        <th>DB NAME</th>
+                    </tr>
+                    <tr>
+                        <td>JAVA</td>
+                        <td>MYSQL</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </ol>
         </div>
         <div class="division"></div>
-        <a href="/login/informacion" class="negarSeleccion customButton"> INFORMACION</a>
-    </div>
+        <a href="/login" class="negarSeleccion customButton"> VOLVER</a>
+    </div> 
 </body>
 </html>

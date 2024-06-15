@@ -4,10 +4,23 @@
  */
 package com.grupoAutogestion.sistemaautogestion.controller;
 
-/**
- *
- * @author tomas
- */
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
 public class LoginController {
-    
+
+    private String[] integrantesGrupo2 = {"Tomas Cerdeyra","Franco Leszkiewicz","Facundo Potes","Tobias Posse", "Matias Lopez","Martin Aguilera","Gino D'Agostino","Juan Cruz Dauberte","Martín Peralta"};
+
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "login";
+    }
+
+    @GetMapping("/login/informacion")
+    public String showInformationPage(Model model) {
+        model.addAttribute("integrantesGrupo2", integrantesGrupo2);
+        return "informacion"; 
+    }
 }
