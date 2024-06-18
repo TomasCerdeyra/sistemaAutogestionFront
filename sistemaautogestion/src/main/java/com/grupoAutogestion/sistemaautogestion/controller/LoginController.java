@@ -4,9 +4,11 @@
  */
 package com.grupoAutogestion.sistemaautogestion.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.core.Authentication;
 
 @Controller
 public class LoginController {
@@ -22,5 +24,14 @@ public class LoginController {
     public String showInformationPage(Model model) {
         model.addAttribute("integrantesGrupo2", integrantesGrupo2);
         return "informacion"; 
+    }
+
+    //Testeo con una vista la conexion con la API login
+    @GetMapping("/testLogs") //Remplazar por la vista 2.Cursos
+    public String showResultPage(Model model) {
+        Authentication autentificacion = SecurityContextHolder.getContext().getAuthentication();
+        String respuestaAPI = autentificacion.getDetails().toString();
+        model.addAttribute("autentificacion", respuestaAPI);
+        return "testLogs";
     }
 }
