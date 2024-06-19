@@ -10,6 +10,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <title>Home</title>
 </head>
 <body>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
     <h1>Lista de Cursos</h1>
     <p th:text="${studentId}"></p>
     <table>
