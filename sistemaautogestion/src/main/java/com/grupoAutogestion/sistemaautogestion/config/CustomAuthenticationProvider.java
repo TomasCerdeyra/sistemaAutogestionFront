@@ -46,7 +46,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 autentificacion = new UsernamePasswordAuthenticationToken(username, password, authorities);
                 ((UsernamePasswordAuthenticationToken) autentificacion).setDetails(respuesta);
                 //Testeo
-                //System.out.println(respuesta);
+                // System.out.println(respuesta);
                 return autentificacion;
             } else {
                 throw new BadCredentialsException("Username o Password invalidos");

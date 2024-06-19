@@ -29,25 +29,4 @@ public class LoginController {
         return "informacion"; 
     }
 
-    //REMPLAZAR POR LA VISTA DE CURSOS
-    //Testeo con una vista la conexion con la API login
-    @GetMapping("/testLogs") //Remplazar por la vista 2.Cursos
-    public String showResultPage(Model model) {
-        model.addAttribute("autentificacion", getUser());
-        return "testLogs";
-    }
-
-    //METODO PARA LA BD (TRASLADAR A SU RESPECTIVO CONTROLADOR)
-    private String getUser(){
-        try {
-            Authentication autentificacion = SecurityContextHolder.getContext().getAuthentication();
-            String respuestaAPI = autentificacion.getDetails().toString();
-            // Respuesta user1: {"token":"66484954fe42e9f79500097bda2f784fb9dea7c479bc2e6374a3f3491a9f51ea","userId":"user1","3600":3600}
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(respuestaAPI);
-            return jsonNode.get("userId").asText();
-        } catch (IOException e) {
-            return "Not Found";
-        }
-    };
 }
