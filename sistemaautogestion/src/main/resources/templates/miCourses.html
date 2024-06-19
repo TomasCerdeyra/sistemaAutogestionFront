@@ -3,15 +3,15 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Lista de Cursos</h1>
-    <table>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Mis Cursos</h1>
+        <table>
         <tr>
             <th>Nombre del Curso</th>
             <th>Descripción</th>
@@ -21,11 +21,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <td th:text="${course.courseName}">Nombre del Curso</td>
             <td th:text="${course.description}">Descripción del Curso</td>
             <td>
-                <form th:action="@{/courses/enroll}" method="post">
-                    <input type="hidden" name="courseId" th:value="${course.id}" />
-                    <input type="hidden" name="studentId" value="1" /> <!-- Reemplaza con el ID del estudiante -->
-                    <button type="submit">Matricular</button>
-                </form>
                 <form th:action="@{/courses/unenroll}" method="post">
                     <input type="hidden" name="_method" value="delete" />
                     <input type="hidden" name="courseId" th:value="${course.id}" />
@@ -35,5 +30,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </td>
         </tr>
     </table>
-</body>
+    </body>
 </html>
