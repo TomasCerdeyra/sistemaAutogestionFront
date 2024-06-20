@@ -8,27 +8,71 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="miCourses.css">
     </head>
     <body>
-        <h1>Mis Cursos</h1>
-        <table>
-        <tr>
-            <th>Nombre del Curso</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-        </tr>
-        <tr th:each="course : ${courses}">
-            <td th:text="${course.courseName}">Nombre del Curso</td>
-            <td th:text="${course.description}">Descripción del Curso</td>
-            <td>
-                <form th:action="@{/courses/unenroll}" method="post">
-                    <input type="hidden" name="_method" value="delete" />
-                    <input type="hidden" name="courseId" th:value="${course.id}" />
-                    <input type="hidden" name="studentId" value="1" /> <!-- Reemplaza con el ID del estudiante -->
-                    <button type="submit">Dar de Baja</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+        <h1>MIS CURSOS</h1>
+        <div id="main-container">  
+            <table>
+                <thead>
+                <tr>
+                    <th>NOMBRE DEL CURSO</th><th>DESCRIPCIÓN</th><th>ACCIONES</th>
+                </tr>
+                </thead>
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.courseName}">Nombre del Curso</td>
+                    <td th:text="${course.description}">Descripción del Curso</td>
+                    <td>
+                        <form th:action="@{/courses/unenroll}" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="courseId" th:value="${course.id}" />
+                            <input type="hidden" name="studentId" value="1" /> <!-- Reemplaza con el ID del estudiante -->
+                            <button type="submit">Dar de Baja</button>
+                        </form>
+                    </td>
+                </tr> 
+        
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.courseName}">Nombre del Curso</td>
+                    <td th:text="${course.description}">Descripción del Curso</td>
+                    <td>
+                        <form th:action="@{/courses/unenroll}" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="courseId" th:value="${course.id}" />
+                            <input type="hidden" name="studentId" value="1" /> <!-- Reemplaza con el ID del estudiante -->
+                            <button type="submit">Dar de Baja</button>
+                        </form>
+                    </td>
+                </tr>
+        
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.courseName}">Nombre del Curso</td>
+                    <td th:text="${course.description}">Descripción del Curso</td>
+                    <td>
+                        <form th:action="@{/courses/unenroll}" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="courseId" th:value="${course.id}" />
+                            <input type="hidden" name="studentId" value="1" /> <!-- Reemplaza con el ID del estudiante -->
+                            <button type="submit">Dar de Baja</button>
+                        </form>
+                    </td>
+                </tr>
+        
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.courseName}">Nombre del Curso</td>
+                    <td th:text="${course.description}">Descripción del Curso</td>
+                    <td>
+                        <form th:action="@{/courses/unenroll}" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <input type="hidden" name="courseId" th:value="${course.id}" />
+                            <input type="hidden" name="studentId" value="1" /> <!-- Reemplaza con el ID del estudiante -->
+                            <button type="submit">Dar de Baja</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
     </body>
 </html>
