@@ -57,18 +57,18 @@ public class HomeController {
     public String unenrollStudent(@RequestParam String courseId,@RequestParam String studentId) {
         String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         restTemplate.delete(url);
-        return "redirect:/miCourses"; // Redirigir a home después de dar de baja al estudiante
+        return "redirect:/myCourses"; // Redirigir a home después de dar de baja al estudiante
     }
     
     //Metodos para mi Course
     
-    @GetMapping("/miCourses")
+    @GetMapping("/myCourses")
     public String getCourses() {
-        return "miCourses"; // nombre de la plantilla sin la extensión .html
+        return "myCourses"; // nombre de la plantilla sin la extensión .html
     }
     
     //Metodo para traer los cursos de un alumno
-    @GetMapping("/miCourses/courses")
+    @GetMapping("/myCourses/courses")
     public String getMiCourses(Model model) {
         String studentId = getUser();
         if ("Not Found".equals(studentId)) {
@@ -87,7 +87,7 @@ public class HomeController {
         model.addAttribute("student", student);
         model.addAttribute("courses", student.getCourses());
 
-        return "miCourses";
+        return "myCourses";
     }
 
     //METODO PARA LA BD (TRASLADAR A SU RESPECTIVO CONTROLADOR)
