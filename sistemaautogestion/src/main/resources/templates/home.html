@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
     <title>Home</title>
 </head>
 <body>
-    <form th:action="@{/logout}" method="post">
-        <button type="submit">Logout</button>
-    </form>
-    <h1>Lista de Cursos</h1>
+    <h1>LISTA DE CURSOS</h1>
     <p th:text="${studentId}"></p>
     <table>
         <tr>
-            <th>Nombre del Curso</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
+            <th>NOMBRE DEL CURSO</th><th>DESCRIPCIÓN</th><th>ACCIONES</th>
         </tr>
         <tr th:each="course : ${courses}">
             <td th:text="${course.courseName}">Nombre del Curso</td>
@@ -24,7 +20,31 @@
                 <form th:action="@{/courses/enroll}" method="post">
                     <input type="hidden" name="courseId" th:value="${course.courseId}" />
                     <input type="hidden" name="studentId" th:value="${studentId}" /> 
-                    <button type="submit">Matricular</button>
+                    <button type="submit" class="matricular">Matricular</button>
+                </form>
+            </td>
+        </tr>
+
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.courseName}">Nombre del Curso</td>
+            <td th:text="${course.description}">Descripción del Curso</td>
+            <td>
+                <form th:action="@{/courses/enroll}" method="post">
+                    <input type="hidden" name="courseId" th:value="${course.courseId}" />
+                    <input type="hidden" name="studentId" th:value="${studentId}" /> 
+                    <button type="submit" class="matricular">Matricular</button>
+                </form>
+            </td>
+        </tr>
+
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.courseName}">Nombre del Curso</td>
+            <td th:text="${course.description}">Descripción del Curso</td>
+            <td>
+                <form th:action="@{/courses/enroll}" method="post">
+                    <input type="hidden" name="courseId" th:value="${course.courseId}" />
+                    <input type="hidden" name="studentId" th:value="${studentId}" /> 
+                    <button type="submit" class="matricular">Matricular</button>
                 </form>
             </td>
         </tr>
