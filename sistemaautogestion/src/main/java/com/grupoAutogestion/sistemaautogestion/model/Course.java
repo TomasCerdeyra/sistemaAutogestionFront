@@ -2,7 +2,7 @@ package com.grupoAutogestion.sistemaautogestion.model;
 
 public class Course {
     
-    private Long id;
+    private String courseId;
     private String courseName;
     private String description;
 
@@ -14,12 +14,12 @@ public class Course {
         this.description = description;
     }
 
-    public Long getId() {
-        return id;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {
