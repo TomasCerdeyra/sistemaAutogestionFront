@@ -1,5 +1,8 @@
 body{
-    background-color: #f5f5f5;
+    background-image: url('/img/Fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -10,6 +13,7 @@ body{
 
 table{
     background-color: white;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
     text-align: left;
     border-collapse: collapse;
     width: 100%;
@@ -37,8 +41,17 @@ tr:hover td{
 h1{
     color: #1f91dc;
     text-align: center;
-    padding: 20px;
+    padding: 5px;
     font-size: 60px;
+    -webkit-text-stroke: 1px white;
+}
+
+h2{
+    color: #1f91dc;
+    text-align: center;
+    padding: 5px;
+    font-size: 30px;
+    -webkit-text-stroke: 0.5px white;
 }
 
 button.matricular{

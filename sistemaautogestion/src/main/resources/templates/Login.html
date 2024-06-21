@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISTEMA DE AUTOGESTIÓN</title>
-    <link rel="stylesheet" href="Login.css">
-
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
     <div class="contenedor">
@@ -24,8 +23,7 @@
             <div th:if="${error}" style="color: red; font-weight: bold;">
                 <div class="division"></div>
                 <div th:if="${error}" th:text="${error}"></div>
-            </div>
-            
+            </div> 
         </div>
         <div class="division"></div>
         <a href="/login/informacion" class="negarSeleccion customButton"> INFORMACION</a>
