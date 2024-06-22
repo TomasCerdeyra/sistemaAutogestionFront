@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupoAutogestion.sistemaautogestion.model.Course;
 import com.grupoAutogestion.sistemaautogestion.model.Student;
-import java.util.Arrays;
-import org.springframework.http.HttpEntity;
+import com.grupoAutogestion.sistemaautogestion.model.UserEvent;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,12 +24,13 @@ public class HomeController {
 
     private static final String API_GESTION_BASE_URL = "https://poo2024.unsada.edu.ar/sistema_gestion/";
     private static final String API_AUTOGESTION_BASE_URL = "https://poo2024.unsada.edu.ar/sistema_autogestion/";
-
+    private static final String API_LOG_URL = "http://localhost:3030/send";
+    
     private RestTemplate restTemplate = new RestTemplate();
     
-    // Metodos para Home
+    // METEDOS PARA EL HOME
     
-    //Metodo para traer todos los cursos
+    //Traer todos los cursos
     @GetMapping("/home")
     public String getHome(Model model) {      
         String url = API_GESTION_BASE_URL + "courses";
@@ -44,11 +44,17 @@ public class HomeController {
         return "/home"; // Nombre de la vista 
     }
 
-    //Metodo para dar de alta un curso
+    // Dar de alta un curso
     @PostMapping("/courses/enroll")
     public String enrollStudent(@RequestParam String courseId, @RequestParam String studentId) {
         String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
+        
+        //Doy de alta en un curso al alumno
         restTemplate.postForObject(url, null, Void.class);
+        
+        //Envio el evento del usurio con el tiempo 
+        UserEvent event = new UserEvent(studentId,courseId, "Alta");
+        restTemplate.postForObject(API_LOG_URL, event, Void.class);
         return "redirect:/home"; // Redirigir a home después de matricular al estudiante
     }
 
@@ -57,17 +63,22 @@ public class HomeController {
     public String unenrollStudent(@RequestParam String courseId,@RequestParam String studentId) {
         String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         restTemplate.delete(url);
+        
+        //Envio el evento del usurio con el tiempo 
+        UserEvent event = new UserEvent(studentId,courseId, "Baja");
+        restTemplate.postForObject(API_LOG_URL, event, Void.class);
+        
         return "redirect:/myCourses"; // Redirigir a home después de dar de baja al estudiante
     }
     
-    //Metodos para mi Course
+    //METODOS PARA MYCOURSES
     
     @GetMapping("/myCourses")
     public String getCourses() {
         return "myCourses"; // nombre de la plantilla sin la extensión .html
     }
     
-    //Metodo para traer los cursos de un alumno
+    //Traer los cursos de un alumno
     @GetMapping("/myCourses/courses")
     public String getMiCourses(Model model) {
         String studentId = getUser();
@@ -90,7 +101,8 @@ public class HomeController {
         return "myCourses";
     }
 
-    //METODO PARA LA BD (TRASLADAR A SU RESPECTIVO CONTROLADOR)
+    
+    //Traer el id del usuario
     private String getUser(){
         try {
             Authentication autentificacion = SecurityContextHolder.getContext().getAuthentication();
