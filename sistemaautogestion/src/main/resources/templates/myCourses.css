@@ -46,7 +46,7 @@ h1{
     -webkit-text-stroke: 1px white;
 }
 
-button{
+button.baja{
     background-color: #ff3333;
     border: none;
     color: white;

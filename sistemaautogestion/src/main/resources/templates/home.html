@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    <div id="navbar"></div>     <!-- Menu Navbar -->
     <h1>LISTA DE CURSOS</h1>
     <h2>BIENVENIDO <span th:text="${studentId}"></span> !</h2>
     <table>
+        <thead>
         <tr>
-            <th>NOMBRE DEL CURSO</th><th>DESCRIPCIÓN</th><th>ACCIONES</th>
+            <th>NOMBRE DEL CURSO</th>
+            <th>DESCRIPCIÓN</th>
+            <th>ACCIONES</th>
         </tr>
+    </thead>
         <tr th:each="course : ${courses}">
             <td th:text="${course.courseName}">Nombre del Curso</td>
             <td th:text="${course.description}">Descripción del Curso</td>
@@ -25,5 +30,15 @@
             </td>
         </tr>
     </table>
+    <!-- Menu Navbar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>

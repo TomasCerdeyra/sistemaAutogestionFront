@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="myCourses.css">
 </head>
 <body>
+    <div id="navbar"></div>     <!-- Menu Navbar -->
     <h1>MIS CURSOS</h1>
     <div id="main-container">
         <!-- Mensaje si no hay cursos -->
@@ -32,7 +33,7 @@
                                 <input type="hidden" name="_method" value="delete" />
                                 <input type="hidden" name="courseId" th:value="${course.courseId}" />
                                 <input type="hidden" name="studentId" th:value="${student.studentId}" />
-                                <button type="submit">Dar de Baja</button>
+                                <button type="submit" class="baja">Dar de Baja</button>
                             </form>
                         </td>
                     </tr>
@@ -40,6 +41,16 @@
             </table>
         </div>
     </div>
+    <!-- Menu Navbar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>
 
