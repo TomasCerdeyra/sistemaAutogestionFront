@@ -27,8 +27,10 @@ public class SecurityConfig {
             .authenticationProvider(customAuthenticationProvider)
             .authorizeRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/login", "/login/informacion", "/css/**", "/js/**", "/img/**").permitAll()
-                    .anyRequest().authenticated()
+                    .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                    .requestMatchers("/home/**", "/myCourses/**").authenticated()
+                    .requestMatchers("/login/**", "/login/informacion").anonymous()
+                    .anyRequest().denyAll()
             )
             .formLogin(formLogin ->
                 formLogin
@@ -42,6 +44,8 @@ public class SecurityConfig {
                     .deleteCookies("JSESSIONID")
                     .permitAll()
                 )
+            .exceptionHandling(exceptionHandling -> exceptionHandling
+                .accessDeniedPage("/home"))
             .build();
     }
 }
