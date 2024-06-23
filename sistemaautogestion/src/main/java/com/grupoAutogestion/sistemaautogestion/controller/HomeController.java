@@ -24,7 +24,7 @@ public class HomeController {
 
     private static final String API_GESTION_BASE_URL = "https://poo2024.unsada.edu.ar/sistema_gestion/";
     private static final String API_AUTOGESTION_BASE_URL = "https://poo2024.unsada.edu.ar/sistema_autogestion/";
-    private static final String API_LOG_URL = "http://localhost:3030/logs/";
+    private static final String API_LOG_URL = "http://localhost:8080/sistema_autogestion/logs/";
     
     private RestTemplate restTemplate = new RestTemplate();
     
@@ -50,11 +50,11 @@ public class HomeController {
         String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         
         //Doy de alta en un curso al alumno
-        restTemplate.postForObject(url, null, Void.class);
+        //restTemplate.postForObject(url, null, Void.class);
         
         //Envio el evento del usurio con el tiempo 
-        
-        UserEvent event = new UserEvent(studentId,courseId, "Alta");
+
+        UserEvent event = new UserEvent(studentId,courseId, "alta");
         restTemplate.postForObject(API_LOG_URL, event, Void.class);
         return "redirect:/home"; // Redirigir a home después de matricular al estudiante
     }
@@ -66,7 +66,7 @@ public class HomeController {
         restTemplate.delete(url);
         
         //Envio el evento del usurio con el tiempo 
-        UserEvent event = new UserEvent(studentId,courseId, "Baja");
+        UserEvent event = new UserEvent(studentId,courseId, "baja");
         restTemplate.postForObject(API_LOG_URL, event, Void.class);
         
         return "redirect:/myCourses"; // Redirigir a home después de dar de baja al estudiante
