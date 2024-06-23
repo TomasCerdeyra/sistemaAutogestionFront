@@ -16,7 +16,6 @@ table{
     text-align: left;
     border-collapse: collapse;
     width: 100%;
-    
 }
 
 th, td{
@@ -38,7 +37,7 @@ tr:hover td{
     color: white;
 }
 
-h1{
+.titular{
     color: #1f91dc;
     text-align: center;
     padding: 5px;
@@ -46,8 +45,9 @@ h1{
     -webkit-text-stroke: 1px white;
 }
 
-button.baja{
-    background-color: #ff3333;
+
+button.matricular{
+    background-color: #198754;
     border: none;
     color: white;
     padding: 5px 10px;
@@ -59,7 +59,7 @@ button.baja{
     cursor: pointer;
 }
 
-button:hover{
-    background-color: #cc0000;
+button.matricular:hover{
+    background-color: #0f5132;
     color: white;
 }

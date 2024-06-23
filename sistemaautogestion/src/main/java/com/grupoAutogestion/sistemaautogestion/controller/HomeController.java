@@ -75,7 +75,8 @@ public class HomeController {
     //METODOS PARA MYCOURSES
     
     @GetMapping("/myCourses")
-    public String getCourses() {
+    public String getCourses(Model model) {
+        model.addAttribute("studentId", getUser());
         return "myCourses"; // nombre de la plantilla sin la extensión .html
     }
     

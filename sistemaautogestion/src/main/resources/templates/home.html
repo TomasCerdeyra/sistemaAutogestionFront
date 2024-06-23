@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-    <div id="navbar"></div>     <!-- Menu Navbar -->
-    <h1>LISTA DE CURSOS</h1>
-    <h2>BIENVENIDO <span th:text="${studentId}"></span> !</h2>
+    <div th:insert="~{/navbar :: navbar}"></div>
+    <h1 class="titular">LISTA DE CURSOS</h1>
     <table>
         <thead>
         <tr>
@@ -30,15 +29,5 @@
             </td>
         </tr>
     </table>
-    <!-- Menu Navbar -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar').innerHTML = data;
-                });
-        });
-    </script>
 </body>
 </html>

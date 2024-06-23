@@ -16,6 +16,7 @@ table{
     text-align: left;
     border-collapse: collapse;
     width: 100%;
+    
 }
 
 th, td{
@@ -37,7 +38,7 @@ tr:hover td{
     color: white;
 }
 
-h1{
+.titular{
     color: #1f91dc;
     text-align: center;
     padding: 5px;
@@ -45,16 +46,8 @@ h1{
     -webkit-text-stroke: 1px white;
 }
 
-h2{
-    color: #1f91dc;
-    text-align: center;
-    padding: 5px;
-    font-size: 30px;
-    -webkit-text-stroke: 0.5px white;
-}
-
-button.matricular{
-    background-color: #198754;
+button.baja{
+    background-color: #ff3333;
     border: none;
     color: white;
     padding: 5px 10px;
@@ -66,7 +59,7 @@ button.matricular{
     cursor: pointer;
 }
 
-button.matricular:hover{
-    background-color: #0f5132;
+button:hover{
+    background-color: #cc0000;
     color: white;
 }

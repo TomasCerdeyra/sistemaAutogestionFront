@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/informacion.css">
 </head>
 <body>
-    <div id="navbar"></div>     <!-- Menu Navbar -->
     <div class="contenedor">
         <div class="contenedorLista">
             <ol style="list-style: none; padding: 0; text-align: center;">
@@ -36,15 +35,5 @@
         <div class="division"></div>
         <a href="/login" class="negarSeleccion customButton"> VOLVER</a>
     </div> 
-        <!-- Menu Navbar -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar').innerHTML = data;
-                });
-        });
-    </script>
 </body>
 </html>

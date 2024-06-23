@@ -19,6 +19,7 @@ public class SecurityConfig {
         this.customAuthenticationProvider = customAuthenticationProvider;
     }
     
+    @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Cursos</title>
-    <link rel="stylesheet" href="myCourses.css">
+    <link rel="stylesheet" href="/css/myCourses.css">
 </head>
 <body>
-    <div id="navbar"></div>     <!-- Menu Navbar -->
-    <h1>MIS CURSOS</h1>
+    <div th:insert="~{/navbar :: navbar}"></div>
+    <h1 class="titular">MIS CURSOS</h1>
     <div id="main-container">
         <!-- Mensaje si no hay cursos -->
         <div th:if="${#lists.isEmpty(courses)}">
@@ -41,16 +41,6 @@
             </table>
         </div>
     </div>
-    <!-- Menu Navbar -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar').innerHTML = data;
-                });
-        });
-    </script>
 </body>
 </html>
 
