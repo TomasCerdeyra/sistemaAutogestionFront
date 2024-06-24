@@ -47,10 +47,10 @@ public class HomeController {
     // Dar de alta un curso
     @PostMapping("/courses/enroll")
     public String enrollStudent(@RequestParam String courseId, @RequestParam String studentId) {
-        String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
+        //String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         
         //Doy de alta en un curso al alumno
-        restTemplate.postForObject(url, null, Void.class);
+        //restTemplate.postForObject(url, null, Void.class);
         
         //Envio el evento del usurio con el tiempo 
         UserEvent event = new UserEvent(studentId,courseId, "alta");

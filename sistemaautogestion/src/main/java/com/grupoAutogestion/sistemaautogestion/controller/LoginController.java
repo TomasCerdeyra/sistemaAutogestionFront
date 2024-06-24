@@ -21,8 +21,6 @@ import org.springframework.security.core.Authentication;
 @Controller
 public class LoginController {
 
-    private String[] integrantesGrupo2 = {"Tomas Cerdeyra","Franco Leszkiewicz","Facundo Potes","Tobias Posse", "Matias Lopez","Martin Aguilera","Gino D'Agostino","Juan Cruz Dauberte","Martín Peralta"};
-
     @GetMapping("/login")
     public String showLoginForm() {
         Authentication autentificacion = SecurityContextHolder.getContext().getAuthentication();
@@ -30,12 +28,6 @@ public class LoginController {
             return "redirect:/home";
         }
         return "login";
-    }
-
-    @GetMapping("/login/informacion")
-    public String showInformationPage(Model model) {
-        model.addAttribute("integrantesGrupo2", integrantesGrupo2);
-        return "informacion"; 
     }
 
     @GetMapping("/logout")

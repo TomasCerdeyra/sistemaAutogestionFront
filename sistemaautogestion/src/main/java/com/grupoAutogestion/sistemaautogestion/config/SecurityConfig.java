@@ -27,10 +27,8 @@ public class SecurityConfig {
             .authenticationProvider(customAuthenticationProvider)
             .authorizeRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                    .requestMatchers("/home/**", "/myCourses/**").authenticated()
-                    .requestMatchers("/login/**", "/login/informacion").anonymous()
-                    .anyRequest().denyAll()
+                    .requestMatchers("/login", "/css/**", "/js/**", "/img/**").permitAll()
+                    .anyRequest().authenticated()
             )
             .formLogin(formLogin ->
                 formLogin
