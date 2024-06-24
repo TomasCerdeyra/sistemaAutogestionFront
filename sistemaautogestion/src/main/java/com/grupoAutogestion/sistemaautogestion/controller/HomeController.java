@@ -50,13 +50,12 @@ public class HomeController {
         String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         
         //Doy de alta en un curso al alumno
-        //restTemplate.postForObject(url, null, Void.class);
+        restTemplate.postForObject(url, null, Void.class);
         
         //Envio el evento del usurio con el tiempo 
-
         UserEvent event = new UserEvent(studentId,courseId, "alta");
         restTemplate.postForObject(API_LOG_URL, event, Void.class);
-        return "redirect:/home"; // Redirigir a home después de matricular al estudiante
+        return "redirect:/home"; 
     }
 
     //Metodo para dar de baja un curso
@@ -69,15 +68,15 @@ public class HomeController {
         UserEvent event = new UserEvent(studentId,courseId, "baja");
         restTemplate.postForObject(API_LOG_URL, event, Void.class);
         
-        return "redirect:/myCourses"; // Redirigir a home después de dar de baja al estudiante
+        return "redirect:/myCourses";
     }
     
-    //METODOS PARA MYCOURSES
+    //METODOS PARA CURSOS DE UN AUMNO
     
     @GetMapping("/myCourses")
     public String getCourses(Model model) {
         model.addAttribute("studentId", getUser());
-        return "myCourses"; // nombre de la plantilla sin la extensión .html
+        return "myCourses"; 
     }
     
     //Traer los cursos de un alumno
@@ -109,7 +108,6 @@ public class HomeController {
         try {
             Authentication autentificacion = SecurityContextHolder.getContext().getAuthentication();
             String respuestaAPI = autentificacion.getDetails().toString();
-            // Respuesta user1: {"token":"66484954fe42e9f79500097bda2f784fb9dea7c479bc2e6374a3f3491a9f51ea","userId":"user1","3600":3600}
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(respuestaAPI);
             return jsonNode.get("userId").asText();
