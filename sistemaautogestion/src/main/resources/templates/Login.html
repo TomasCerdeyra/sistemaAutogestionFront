@@ -20,13 +20,7 @@
                 <div class="division"></div>
                 <button type="submit" class="negarSeleccion customButton">LOGIN</button>
             </form>
-            <div th:if="${error}" style="color: red; font-weight: bold;">
-                <div class="division"></div>
-                <div th:if="${error}" th:text="${error}"></div>
-            </div> 
         </div>
-        <div class="division"></div>
-        <a href="/login/informacion" class="negarSeleccion customButton"> INFORMACION</a>
     </div>
 </body>
 </html>
