@@ -45,7 +45,7 @@ public class HomeController {
     }
 
     // Dar de alta un curso
-    @PostMapping("/courses/enroll")
+    @PostMapping("/courses/enroll/alta")
     public String enrollStudent(@RequestParam String courseId, @RequestParam String studentId) {
         //String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         
@@ -59,10 +59,10 @@ public class HomeController {
     }
 
     //Metodo para dar de baja un curso
-    @DeleteMapping("/courses/unenroll")
+    @PostMapping("/courses/unenroll/baja") //Esto es un delete despues cuando tenga la API de cursos
     public String unenrollStudent(@RequestParam String courseId,@RequestParam String studentId) {
-        String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
-        restTemplate.delete(url);
+        //String url = API_AUTOGESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
+        //restTemplate.delete(url);
         
         //Envio el evento del usurio con el tiempo 
         UserEvent event = new UserEvent(studentId,courseId, "baja");
@@ -73,22 +73,16 @@ public class HomeController {
     
     //METODOS PARA CURSOS DE UN AUMNO
     
+    //Traer los cursos de un alumno
     @GetMapping("/myCourses")
     public String getCourses(Model model) {
-        model.addAttribute("studentId", getUser());
-        return "myCourses"; 
-    }
-    
-    //Traer los cursos de un alumno
-    @GetMapping("/myCourses/courses")
-    public String getMiCourses(Model model) {
         String studentId = getUser();
         if ("Not Found".equals(studentId)) {
             // Si el id no se encuentra
             return "error";
         }
 
-        String url = API_GESTION_BASE_URL + "students/" + studentId;
+        String url = API_GESTION_BASE_URL + "students/" + "student2"; //Students2 se cambiaria por studentId
         ResponseEntity<Student> response = restTemplate.getForEntity(url, Student.class);
         Student student = response.getBody();
 
@@ -99,10 +93,9 @@ public class HomeController {
         model.addAttribute("student", student);
         model.addAttribute("courses", student.getCourses());
 
-        return "myCourses";
+        return "myCourses"; 
     }
 
-    
     //Traer el id del usuario desde la api
     private String getUser(){
         try {

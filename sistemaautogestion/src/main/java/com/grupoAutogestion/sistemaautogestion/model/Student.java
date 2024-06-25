@@ -15,7 +15,7 @@ public class Student {
     private String studentId;
     private String firstName;
     private String lastName;
-    private List<Course> courses;
+    private List<String> courses;
 
     // Getters y setters
     public String getStudentId() {
@@ -42,11 +42,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public List<Course> getCourses() {
+    public List<String> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(List<String> courses) {
         this.courses = courses;
     }
 }
