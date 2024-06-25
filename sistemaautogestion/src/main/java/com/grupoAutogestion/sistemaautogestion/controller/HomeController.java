@@ -103,7 +103,7 @@ public class HomeController {
     }
 
     
-    //Traer el id del usuario
+    //Traer el id del usuario desde la api
     private String getUser(){
         try {
             Authentication autentificacion = SecurityContextHolder.getContext().getAuthentication();
