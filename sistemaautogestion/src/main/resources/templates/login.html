@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE AUTOGESTIÓN</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="contenedor">
+    <div class="contenedorLogin">
+        <form th:action="@{/login}" method="post">
+            <label for="Usuario", class="negarSeleccion">USUARIO:</label>
+            <div class="division"></div>
+            <input id="username" type="text" name="username" placeholder="Ingrese su usuario" class="customEntry"/>
+            <div class="division"></div>
+            <label for="Contraseña" class="negarSeleccion"> CONTRASEÑA:</label>
+            <div class="division"></div>
+            <input id="password" type="password" name="password" placeholder="Ingrese su contraseña" class="customEntry"/>
+            <div class="division"></div>
+            <button type="submit" class="negarSeleccion customButton">LOGIN</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
