@@ -22,8 +22,8 @@ import java.util.Collections;
 @Controller
 public class HomeController {
 
-    private static final String API_GESTION_BASE_URL = "https://poo2024.unsada.edu.ar/sistema_gestion/";
-    private static final String API_AUTOGESTION_BASE_URL = "https://poo2024.unsada.edu.ar/sistema_autogestion/";
+    private static final String API_GESTION_BASE_URL = "https://poo-dev.unsada.edu.ar/sistema_gestion/";
+    private static final String API_AUTOGESTION_BASE_URL = "https://poo2-dev.unsada.edu.ar/sistema_autogestion/";
     private static final String API_LOG_URL = "http://poo-dev.unsada.edu.ar:8080/sistema_autogestion/logs/";
     
     private RestTemplate restTemplate = new RestTemplate();

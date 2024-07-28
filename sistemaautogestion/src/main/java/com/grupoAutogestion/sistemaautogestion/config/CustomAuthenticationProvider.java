@@ -29,8 +29,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String loginAPIURL = "http://localhost:4000/sistema_login/login";
-    private static final String authorizeAPIURL = "http://localhost:4000/sistema_login/authorize";
+    private static final String loginAPIURL = "http://poo-dev.unsada.edu.ar:4000/sistema_login/login";
+    private static final String authorizeAPIURL = "http://poo-dev.unsada.edu.ar:4000/sistema_login/authorize";
 
     @Override
     public Authentication authenticate(Authentication autentificacion) throws AuthenticationException {
@@ -48,7 +48,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             if (responseEntity.getStatusCode().is2xxSuccessful()) {
                 String respuestaLogin = responseEntity.getBody();
                 //Testeo
-                //System.out.println(respuestaLogin);
+                System.out.println(respuestaLogin);
 
                 HttpHeaders headersAuthorize = new HttpHeaders();
                 headersAuthorize.setContentType(MediaType.APPLICATION_JSON);
@@ -66,7 +66,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                         String respuestaAuthorize = responseEntityAuthorize.getBody();
                         JsonNode jsonNode1 = objectMapper.readTree(respuestaAuthorize);
 
-                        //System.out.println(respuestaAuthorize);
+                        System.out.println(respuestaAuthorize);
                         if (jsonNode1.get("authorized").asBoolean() == true){
                             autentificacion = new UsernamePasswordAuthenticationToken(username, password, authorities);
                             ((UsernamePasswordAuthenticationToken) autentificacion).setDetails(respuestaLogin);
