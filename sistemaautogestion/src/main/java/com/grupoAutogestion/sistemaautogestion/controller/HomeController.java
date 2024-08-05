@@ -65,7 +65,6 @@ public class HomeController {
 
         String studentId = getUser();
         model.addAttribute("studentId", studentId);
-        System.out.print(studentId);
         return "/home"; // Nombre de la vista 
     }
 
@@ -75,11 +74,12 @@ public class HomeController {
         String url = API_GESTION_BASE_URL + "courses/" + courseId + "/enroll/student" + studentId;
 
         try {
+            // Envio del evento del usuario con el tiempo
+            String studnetID = "student" + studentId;  
+            UserEvent event = new UserEvent(studnetID, courseId, "alta");
+            restTemplate.postForObject(API_LOG_URL, event, Void.class);
             // Intento de alta en el curso
             restTemplate.postForObject(url, null, Void.class);
-            // Envio del evento del usuario con el tiempo
-            UserEvent event = new UserEvent(studentId, courseId, "alta");
-            restTemplate.postForObject(API_LOG_URL, event, Void.class);
             return "redirect:/home";
         } catch (Exception e) {
             // Cualquier otro error inesperado
@@ -94,7 +94,7 @@ public class HomeController {
         String url = API_GESTION_BASE_URL + "courses/" + courseId + "/enroll/" + studentId;
         restTemplate.delete(url);
 
-        //Envio el evento del usurio con el tiempo 
+        //Envio el evento del usurio con el tiempo
         UserEvent event = new UserEvent(studentId, courseId, "baja");
         restTemplate.postForObject(API_LOG_URL, event, Void.class);
 
