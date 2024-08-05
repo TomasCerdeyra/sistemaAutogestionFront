@@ -1,17 +1,21 @@
 package com.grupoAutogestion.sistemaautogestion.model;
 
+import java.util.List;
+
 public class Course {
     
     private String courseId;
     private String courseName;
     private String description;
+    private List<String> students; // Agregar el campo students
 
     public Course() {
     }
 
-    public Course(String courseName, String description) {
+    public Course(String courseName, String description, List<String> students) {
         this.courseName = courseName;
         this.description = description;
+        this.students = students;
     }
 
     public String getCourseId() {
@@ -36,5 +40,13 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<String> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<String> students) {
+        this.students = students;
     }
 }

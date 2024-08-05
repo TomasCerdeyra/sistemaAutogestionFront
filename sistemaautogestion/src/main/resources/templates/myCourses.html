@@ -12,7 +12,7 @@
     <div id="main-container">
         <!-- Mensaje si no hay cursos ---->
         <div th:if="${#lists.isEmpty(courses)}">
-            <p>No tienes cursos aún.</p>
+            <p class="noCourses">No tienes cursos aún.</p>
         </div>
          <!-- !-- Tabla de cursos si hay cursos -->
         <div th:if="${!#lists.isEmpty(courses)}">
@@ -26,13 +26,13 @@
                 </thead>
                 <tbody>
                     <tr th:each="course : ${courses}">
-                        <td th:text="${course}">Nombre del Curso</td>
-                        <td th:text="${course}">Descripción del Curso</td>
+                        <td th:text="${course.courseName}">Nombre del Curso</td>
+                        <td th:text="${course.description}">Descripción del Curso</td>
                         <td>
                             <form th:action="@{/courses/unenroll/baja}" method="post">
                                 <!--<input type="hidden" name="_method" value="delete" />-->
-                                <input type="hidden" name="courseId" th:value="${course}" />   <!--Lo de abajo si tengo el id -->
-                                <input type="hidden" name="studentId" th:value="student2" /><!-- ${student.studentId} -->
+                                <input type="hidden" name="courseId" th:value="${course.courseId}" />   <!--Lo de abajo si tengo el id -->
+                                <input type="hidden" name="studentId" th:value="${estudiante}" /><!-- ${student.studentId} -->
                                 <button type="submit" class="baja">Dar de Baja</button>
                             </form>
                         </td>

@@ -46,6 +46,11 @@ tr:hover td{
     -webkit-text-stroke: 1px white;
 }
 
+.noCourses{
+    color: white;
+    font-size: 50px
+}
+
 button.baja{
     background-color: #ff3333;
     border: none;

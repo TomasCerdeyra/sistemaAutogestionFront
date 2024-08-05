@@ -13,17 +13,26 @@ import java.util.List;
 public class Student {
 
     private String studentId;
+    private String userId;
     private String firstName;
     private String lastName;
     private List<String> courses;
 
-    // Getters y setters
+    // Getters and Setters
     public String getStudentId() {
         return studentId;
     }
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
